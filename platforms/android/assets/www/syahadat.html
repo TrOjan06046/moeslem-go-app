@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MoeslemGo</title>
+<link rel="icon" type="image/png" href="img/moslemgo.png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery.mobile-1.3.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- <script src="js/Session.js" type="text/javascript" ></script> -->
+
+<script type="text/javascript">
+	var id;
+    	$(function () {
+    	var parameters = location.search.substring(1).split("&");
+    	var temp = parameters[0].split("=");
+	    id = unescape(temp[1]);
+	    // alert(id);
+	    $.ajax({
+         type: 'GET',
+          url: "http://api.alquran.cloud/surah/"+id+"/editions/quran-simple,id.muntakhab",
+          dataType: "json",
+          crossDomain: true,
+          success: function( response ) {
+                  console.log( response ); // server response
+                  var id = response.data[0].ayahs; 
+                  for (var i = 0; i < id.length; i++) {
+           			
+                  	$('#isisurah').append("<div data-role='collapsible-set' data-theme='b' data-content-theme='b'><div data-role='collapsible' data-collapsed-icon='flat-time' data-expanded-icon='flat-cross' data-collapsed='false'><h3>Surat "+response.data[1].englishName+" Ayat "+(i + 1)+"</h3><p align='right' style='font-size: x-large;'>"+response.data[0].ayahs[i].text+"</p></div><div data-role='collapsible' data-collapsed-icon='flat-settings' data-expanded-icon='flat-cross'><h3>Terjemahan</h3><p align='left' style='text-align: justify;'>"+response.data[1].ayahs[i].text+"</p></div></div>");
+                  }
+                  
+                  $('#namesrh').html(response.data[1].englishName);
+                  // $('#transl1').html(response.data[1].ayahs[0].text);
+          }
+        });
+	    
+        });
+
+
+        
+               
+    	
+		function home(){
+    		location.href = "index.html";  
+		}
+		function quran(a){
+    		location.href = "quran.html?id="+a;  
+		}
+		
+</script>
+</head>
+<body>
+  <div data-role="page" id="mainpage">
+
+    <div data-role="panel" id="panel" data-position="right" data-theme="b" data-display="push">
+            <div data-role="collapsible" data-collapsed-icon="flat-new" data-expanded-icon="flat-cross">
+                  <h3>Al -Quran</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a onclick="quran(1)"> Al-Fatihah</a></li>
+                      <li><a onclick="quran(2)"> Al-Baqarah</a></li>
+                      <li><a onclick="quran(3)"> Al-i'Imran</a></li>
+                      <li><a onclick="quran(4)"> An-Nisaa</a></li>
+                      <li><a onclick="quran(5)"> Al-Maidah</a></li>
+                      <li><a onclick="quran(6)"> Al-An'am</a></li>
+                      <li><a onclick="quran(7)"> Al-A'raf</a></li>
+                      <li><a onclick="quran(8)"> Al-Anfal</a></li>
+                      <li><a onclick="quran(9)"> At-Tauba</a></li>
+                      <li><a onclick="quran(10)"> Yunus</a></li>
+                      <li><a onclick="quran(11)"> Hud</a></li>
+                      <li><a onclick="quran(12)"> Yusuf</a></li>
+                      <li><a onclick="quran(13)"> Ar-Ra'd</a></li>
+                      <li><a onclick="quran(14)"> Ibrahim</a></li>
+                      <li><a onclick="quran(15)"> Al-Hijr</a></li>
+                      <li><a onclick="quran(16)"> An-Nahl</a></li>
+                      <li><a onclick="quran(17)"> Al-Isra</a></li>
+                      <li><a onclick="quran(18)"> Al-Kahfi</a></li>
+                      <li><a onclick="quran(19)"> Maryam</a></li>
+                      <li><a onclick="quran(20)"> Ta-ha</a></li>
+                      <li><a onclick="quran(21)"> Al-Anbiyaa</a></li>
+                      <li><a onclick="quran(22)"> Al-Hajj</a></li>
+                      <li><a onclick="quran(23)"> Al-Muminun</a></li>
+                      <li><a onclick="quran(24)"> An-Nur</a></li>
+                      <li><a onclick="quran(25)"> Al-Furqan</a></li>
+                      <li><a onclick="quran(26)"> Ash-Shu'araa</a></li>
+                      <li><a onclick="quran(27)"> An-Naml</a></li>
+                      <li><a onclick="quran(28)"> Al-Qashash</a></li>
+                      <li><a onclick="quran(29)"> Al-Ankabut</a></li>
+                      <li><a onclick="quran(30)"> Ar-Rum</a></li>
+                      <li><a onclick="quran(31)"> Luqman</a></li>
+                      <li><a onclick="quran(32)"> As-Sajdah</a></li>
+                      <li><a onclick="quran(33)"> Al-Ahzab</a></li>
+                      <li><a onclick="quran(34)"> Saba</a></li>
+                      <li><a onclick="quran(35)"> Faathir</a></li>
+                      <li><a onclick="quran(36)"> Ya-Sin</a></li>
+                      <li><a onclick="quran(37)"> Ash-Shaffat</a></li>
+                      <li><a onclick="quran(38)"> Sad</a></li>
+                      <li><a onclick="quran(39)"> Az-Zumar</a></li>
+                      <li><a onclick="quran(40)"> Al-Mu'min</a></li>
+                      <li><a onclick="quran(41)"> Ha-Mim</a></li>
+                      <li><a onclick="quran(42)"> Ash-Shura</a></li>
+                      <li><a onclick="quran(43)"> Az-Zukhruf</a></li>
+                      <li><a onclick="quran(44)"> Ad-Dukhan</a></li>
+                      <li><a onclick="quran(45)"> Al-Jathiya</a></li>
+                      <li><a onclick="quran(46)"> Al-Ahqaf</a></li>
+                      <li><a onclick="quran(47)"> Muhammad</a></li>
+                      <li><a onclick="quran(48)"> Al-Fat-h</a></li>
+                      <li><a onclick="quran(49)"> Al-Hujurat</a></li>
+                      <li><a onclick="quran(50)"> Qaaf</a></li>
+                      <li><a onclick="quran(51)"> Az-Zariyat</a></li>
+                      <li><a onclick="quran(52)"> At-Tur</a></li>
+                      <li><a onclick="quran(53)"> An-Najm</a></li>
+                      <li><a onclick="quran(54)"> Al-Qamar</a></li>
+                      <li><a onclick="quran(55)"> Ar-Rahman</a></li>
+                      <li><a onclick="quran(56)"> Al-Waaqi'ah</a></li>
+                      <li><a onclick="quran(57)"> Al-Hadid</a></li>
+                      <li><a onclick="quran(58)"> Al-Mujadila</a></li>
+                      <li><a onclick="quran(59)"> Al-Hasyr</a></li>
+                      <li><a onclick="quran(60)"> Al-Mumtahana</a></li>
+                      <li><a onclick="quran(61)"> As-Shaff</a></li>
+                      <li><a onclick="quran(62)"> Al-jumu'ah</a></li>
+                      <li><a onclick="quran(63)"> Al-munafik</a></li>
+                      <li><a onclick="quran(64)"> At-Tagabun</a></li>
+                      <li><a onclick="quran(65)"> At-talaq</a></li>
+                      <li><a onclick="quran(66)"> At-Tahrim</a></li>
+                      <li><a onclick="quran(67)"> Al-Mulk</a></li>
+                      <li><a onclick="quran(68)"> Al-Qalam</a></li>
+                      <li><a onclick="quran(69)"> Al-aqqa</a></li>
+                      <li><a onclick="quran(70)"> Al-Ma'arij</a></li>
+                      <li><a onclick="quran(71)"> Nuh</a></li>
+                      <li><a onclick="quran(72)"> Al-Jinn</a></li>
+                      <li><a onclick="quran(73)"> Al-Muzzammil</a></li>
+                      <li><a onclick="quran(74)"> Al-Muddathth</a></li>
+                      <li><a onclick="quran(75)"> Al-Qiyamat</a></li>
+                      <li><a onclick="quran(76)"> Ad-Dahr</a></li>
+                      <li><a onclick="quran(77)"> Al-Mursalat</a></li>
+                      <li><a onclick="quran(78)"> An-Nabaa</a></li>
+                      <li><a onclick="quran(79)"> An-Nazi'at</a></li>
+                      <li><a onclick="quran(80)"> Abasa</a></li>
+                      <li><a onclick="quran(81)"> At-Takwir</a></li>
+                      <li><a onclick="quran(82)"> Al-Infitar</a></li>
+                      <li><a onclick="quran(83)"> Al-Mutaffife</a></li>
+                      <li><a onclick="quran(84)"> Al-Inshiqaq</a></li>
+                      <li><a onclick="quran(85)"> Al-Buruj</a></li>
+                      <li><a onclick="quran(86)"> At-Tariq</a></li>
+                      <li><a onclick="quran(87)"> Al-A'la</a></li>
+                      <li><a onclick="quran(88)"> Al-Gashiya</a></li>
+                      <li><a onclick="quran(89)"> Al-Fajr</a></li>
+                      <li><a onclick="quran(90)"> Al-Balad</a></li>
+                      <li><a onclick="quran(91)"> Ash-Shams</a></li>
+                      <li><a onclick="quran(92)"> Al-Lail</a></li>
+                      <li><a onclick="quran(93)"> Adz-Dhuha</a></li>
+                      <li><a onclick="quran(94)"> Al-Syarh</a></li>
+                      <li><a onclick="quran(95)"> At-Tin</a></li>
+                      <li><a onclick="quran(96)"> Al-Alaq</a></li>
+                      <li><a onclick="quran(97)"> Al-Qadr</a></li>
+                      <li><a onclick="quran(98)"> Al-Baiyina</a></li>
+                      <li><a onclick="quran(99)"> Al-Zalzalah</a></li>
+                      <li><a onclick="quran(100)"> Al-Adiyat</a></li>
+                      <li><a onclick="quran(101)"> Al-Qari'a</a></li>
+                      <li><a onclick="quran(102)"> At-Takathur</a></li>
+                      <li><a onclick="quran(103)"> Al-Asr</a></li>
+                      <li><a onclick="quran(104)"> Al-Humaza</a></li>
+                      <li><a onclick="quran(105)"> Al-Fil</a></li>
+                      <li><a onclick="quran(106)"> Quraish</a></li>
+                      <li><a onclick="quran(107)"> Al-Ma'un</a></li>
+                      <li><a onclick="quran(108)"> Al-Kautsar</a></li>
+                      <li><a onclick="quran(109)"> Al-Kaafirun</a></li>
+                      <li><a onclick="quran(110)"> An-Nashr</a></li>
+                      <li><a onclick="quran(111)"> Al-Lahab</a></li>
+                      <li><a onclick="quran(112)"> Al-Ikhlas</a></li>
+                      <li><a onclick="quran(113)"> Al-Falaq</a></li>
+                      <li><a onclick="quran(114)"> Al-Nas</a></li>
+                  </ul>
+              </div>
+
+              <div data-role="collapsible" data-collapsed-icon="flat-time" data-expanded-icon="flat-cross">
+                  <h3>Doa Harian</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#pagebahagia">Bahagia Dunia Akhirat</a></li>
+                      <li><a href="#pagebukapuasa">Buka Puasa</a></li>
+                      <li><a href="#pagesblmmakan">Sebelum Makan</a></li>
+                      <li><a href="#pagessdhmakan">Setelah Makan</a></li>
+                      <li><a href="#pagesusahtidur">Susah Tidur</a></li>
+                      <li><a href="#pagemusibah">Tertimpa Musibah</a></li>
+                      <li><a href="#pageorangtua">Untuk Orang Tua</a></li>
+                  </ul>
+              </div>
+              <div data-role="collapsible" data-collapsed-icon="flat-calendar" data-expanded-icon="flat-cross">
+                  <h3>Doa Sholat</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#pagesholatwajib">Niat Sholat Wajib</a></li>
+                      <li><a href="#pagestlhsholat">Setelah Sholat</a></li>
+                  </ul>
+              </div>
+              <div data-role="collapsible" data-collapsed-icon="flat-settings" data-expanded-icon="flat-cross">
+                  <h3>Doa Haji/Umroh</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#pagemasukmekah">Masuk Mekah</a></li>
+                  </ul>
+              </div>
+
+              <!-- <div data-role="collapsible" data-collapsed-icon="flat-heart" data-expanded-icon="flat-cross">
+                  <h3>Komunitas</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#semua">Semua</a></li>
+                       <li><a href="#olehsaya">Oleh Saya</a></li>
+                  </ul>
+              </div>
+
+              <div data-role="collapsible" data-collapsed-icon="flat-eye" data-expanded-icon="flat-cross">
+                  <h3>Kalender</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#kalenderislam">Kalender Hijriyah</a></li>
+                       <li><a href="#liburanmuslim">Liburan Muslim</a></li>
+                  </ul>
+              </div> -->
+
+              <div data-role="collapsible" data-collapsed-icon="flat-bubble" data-expanded-icon="flat-cross">
+                  <h3>Alat</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <!-- <li><a href="#tasbih">Tasbih</a></li>
+                       <li><a href="#masjid">Masjid</a></li>
+                        <li><a href="#tempathalal">Tempat Halal</a></li> -->
+                         <li><a href="syahadat.html">Syahadat</a></li>
+                          <li><a href="asmaul.html">99nama</a></li>
+                           <!-- <li><a href="#zakat">Zakat</a></li>
+                            <li><a href="#kiblat">Kiblat</a></li>
+                              <li><a href="#waktu">Waktu</a></li> -->
+                  </ul>
+              </div>
+
+               <!-- <div data-role="collapsible" data-collapsed-icon="flat-settings" data-expanded-icon="flat-cross">
+                  <h3>Pengaturan</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#daftardanmasuk">Daftar dan Masuk</a></li>
+                      <li><a href="#waktusholat">Waktu Sholat</a></li>
+                      <li><a href="#al-quraan">Al-Quraan</a></li>
+                      <li><a href="#halaldanmasjid">Halal dan Masjid</a></li>
+                      <li><a href="#mengenai">Mengenai</a></li>
+                  </ul>
+              </div> -->
+        </div>
+        
+        <div data-role="header" data-theme="b">
+            <a onclick="home()" data-role="back" data-icon="back" title="Back">Back</a>
+            <h1 > Syahadat</span></h1>
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+                <div data-role="collapsible" data-collapsed-icon="flat-time" data-expanded-icon="flat-cross" data-collapsed="false">
+                    <h3>Bacaan Syahadat</h3>
+                    <p><div id="imgcontainer">
+                        <img  style="max-height:100%; max-width:100%;" src="img/syahadat.png" /></div></p>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+  <div id="highlight"> </div>
+</body>
+</html>

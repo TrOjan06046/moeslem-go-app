@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MoeslemGo</title>
+<link rel="icon" type="image/png" href="img/moslemgo.png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery.mobile-1.3.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- <script src="js/Session.js" type="text/javascript" ></script> -->
+
+<script type="text/javascript">
+	var id;
+    	$(function () {
+    	var parameters = location.search.substring(1).split("&");
+    	var temp = parameters[0].split("=");
+	    id = unescape(temp[1]);
+	    // alert(id);
+	    $.ajax({
+         type: 'GET',
+          url: "http://api.alquran.cloud/surah/"+id+"/editions/quran-simple,id.muntakhab",
+          dataType: "json",
+          crossDomain: true,
+          success: function( response ) {
+                  console.log( response ); // server response
+                  var id = response.data[0].ayahs; 
+                  for (var i = 0; i < id.length; i++) {
+           			
+                  	$('#isisurah').append("<div data-role='collapsible-set' data-theme='b' data-content-theme='b'><div data-role='collapsible' data-collapsed-icon='flat-time' data-expanded-icon='flat-cross' data-collapsed='false'><h3>Surat "+response.data[1].englishName+" Ayat "+(i + 1)+"</h3><p align='right' style='font-size: x-large;'>"+response.data[0].ayahs[i].text+"</p></div><div data-role='collapsible' data-collapsed-icon='flat-settings' data-expanded-icon='flat-cross'><h3>Terjemahan</h3><p align='left' style='text-align: justify;'>"+response.data[1].ayahs[i].text+"</p></div></div>");
+                  }
+                  
+                  $('#namesrh').html(response.data[1].englishName);
+                  // $('#transl1').html(response.data[1].ayahs[0].text);
+          }
+        });
+	    
+        });
+
+
+        
+               
+    	
+		function home(){
+    		location.href = "index.html";  
+		}
+		function quran(a){
+    		location.href = "quran.html?id="+a;  
+		}
+		
+</script>
+</head>
+<body>
+  <div data-role="page" id="mainpage">
+
+    <div data-role="panel" id="panel" data-position="right" data-theme="b" data-display="push">
+            <div data-role="collapsible" data-collapsed-icon="flat-new" data-expanded-icon="flat-cross">
+                  <h3>Al -Quran</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a onclick="quran(1)"> Al-Fatihah</a></li>
+                      <li><a onclick="quran(2)"> Al-Baqarah</a></li>
+                      <li><a onclick="quran(3)"> Al-i'Imran</a></li>
+                      <li><a onclick="quran(4)"> An-Nisaa</a></li>
+                      <li><a onclick="quran(5)"> Al-Maidah</a></li>
+                      <li><a onclick="quran(6)"> Al-An'am</a></li>
+                      <li><a onclick="quran(7)"> Al-A'raf</a></li>
+                      <li><a onclick="quran(8)"> Al-Anfal</a></li>
+                      <li><a onclick="quran(9)"> At-Tauba</a></li>
+                      <li><a onclick="quran(10)"> Yunus</a></li>
+                      <li><a onclick="quran(11)"> Hud</a></li>
+                      <li><a onclick="quran(12)"> Yusuf</a></li>
+                      <li><a onclick="quran(13)"> Ar-Ra'd</a></li>
+                      <li><a onclick="quran(14)"> Ibrahim</a></li>
+                      <li><a onclick="quran(15)"> Al-Hijr</a></li>
+                      <li><a onclick="quran(16)"> An-Nahl</a></li>
+                      <li><a onclick="quran(17)"> Al-Isra</a></li>
+                      <li><a onclick="quran(18)"> Al-Kahfi</a></li>
+                      <li><a onclick="quran(19)"> Maryam</a></li>
+                      <li><a onclick="quran(20)"> Ta-ha</a></li>
+                      <li><a onclick="quran(21)"> Al-Anbiyaa</a></li>
+                      <li><a onclick="quran(22)"> Al-Hajj</a></li>
+                      <li><a onclick="quran(23)"> Al-Muminun</a></li>
+                      <li><a onclick="quran(24)"> An-Nur</a></li>
+                      <li><a onclick="quran(25)"> Al-Furqan</a></li>
+                      <li><a onclick="quran(26)"> Ash-Shu'araa</a></li>
+                      <li><a onclick="quran(27)"> An-Naml</a></li>
+                      <li><a onclick="quran(28)"> Al-Qashash</a></li>
+                      <li><a onclick="quran(29)"> Al-Ankabut</a></li>
+                      <li><a onclick="quran(30)"> Ar-Rum</a></li>
+                      <li><a onclick="quran(31)"> Luqman</a></li>
+                      <li><a onclick="quran(32)"> As-Sajdah</a></li>
+                      <li><a onclick="quran(33)"> Al-Ahzab</a></li>
+                      <li><a onclick="quran(34)"> Saba</a></li>
+                      <li><a onclick="quran(35)"> Faathir</a></li>
+                      <li><a onclick="quran(36)"> Ya-Sin</a></li>
+                      <li><a onclick="quran(37)"> Ash-Shaffat</a></li>
+                      <li><a onclick="quran(38)"> Sad</a></li>
+                      <li><a onclick="quran(39)"> Az-Zumar</a></li>
+                      <li><a onclick="quran(40)"> Al-Mu'min</a></li>
+                      <li><a onclick="quran(41)"> Ha-Mim</a></li>
+                      <li><a onclick="quran(42)"> Ash-Shura</a></li>
+                      <li><a onclick="quran(43)"> Az-Zukhruf</a></li>
+                      <li><a onclick="quran(44)"> Ad-Dukhan</a></li>
+                      <li><a onclick="quran(45)"> Al-Jathiya</a></li>
+                      <li><a onclick="quran(46)"> Al-Ahqaf</a></li>
+                      <li><a onclick="quran(47)"> Muhammad</a></li>
+                      <li><a onclick="quran(48)"> Al-Fat-h</a></li>
+                      <li><a onclick="quran(49)"> Al-Hujurat</a></li>
+                      <li><a onclick="quran(50)"> Qaaf</a></li>
+                      <li><a onclick="quran(51)"> Az-Zariyat</a></li>
+                      <li><a onclick="quran(52)"> At-Tur</a></li>
+                      <li><a onclick="quran(53)"> An-Najm</a></li>
+                      <li><a onclick="quran(54)"> Al-Qamar</a></li>
+                      <li><a onclick="quran(55)"> Ar-Rahman</a></li>
+                      <li><a onclick="quran(56)"> Al-Waaqi'ah</a></li>
+                      <li><a onclick="quran(57)"> Al-Hadid</a></li>
+                      <li><a onclick="quran(58)"> Al-Mujadila</a></li>
+                      <li><a onclick="quran(59)"> Al-Hasyr</a></li>
+                      <li><a onclick="quran(60)"> Al-Mumtahana</a></li>
+                      <li><a onclick="quran(61)"> As-Shaff</a></li>
+                      <li><a onclick="quran(62)"> Al-jumu'ah</a></li>
+                      <li><a onclick="quran(63)"> Al-munafik</a></li>
+                      <li><a onclick="quran(64)"> At-Tagabun</a></li>
+                      <li><a onclick="quran(65)"> At-talaq</a></li>
+                      <li><a onclick="quran(66)"> At-Tahrim</a></li>
+                      <li><a onclick="quran(67)"> Al-Mulk</a></li>
+                      <li><a onclick="quran(68)"> Al-Qalam</a></li>
+                      <li><a onclick="quran(69)"> Al-aqqa</a></li>
+                      <li><a onclick="quran(70)"> Al-Ma'arij</a></li>
+                      <li><a onclick="quran(71)"> Nuh</a></li>
+                      <li><a onclick="quran(72)"> Al-Jinn</a></li>
+                      <li><a onclick="quran(73)"> Al-Muzzammil</a></li>
+                      <li><a onclick="quran(74)"> Al-Muddathth</a></li>
+                      <li><a onclick="quran(75)"> Al-Qiyamat</a></li>
+                      <li><a onclick="quran(76)"> Ad-Dahr</a></li>
+                      <li><a onclick="quran(77)"> Al-Mursalat</a></li>
+                      <li><a onclick="quran(78)"> An-Nabaa</a></li>
+                      <li><a onclick="quran(79)"> An-Nazi'at</a></li>
+                      <li><a onclick="quran(80)"> Abasa</a></li>
+                      <li><a onclick="quran(81)"> At-Takwir</a></li>
+                      <li><a onclick="quran(82)"> Al-Infitar</a></li>
+                      <li><a onclick="quran(83)"> Al-Mutaffife</a></li>
+                      <li><a onclick="quran(84)"> Al-Inshiqaq</a></li>
+                      <li><a onclick="quran(85)"> Al-Buruj</a></li>
+                      <li><a onclick="quran(86)"> At-Tariq</a></li>
+                      <li><a onclick="quran(87)"> Al-A'la</a></li>
+                      <li><a onclick="quran(88)"> Al-Gashiya</a></li>
+                      <li><a onclick="quran(89)"> Al-Fajr</a></li>
+                      <li><a onclick="quran(90)"> Al-Balad</a></li>
+                      <li><a onclick="quran(91)"> Ash-Shams</a></li>
+                      <li><a onclick="quran(92)"> Al-Lail</a></li>
+                      <li><a onclick="quran(93)"> Adz-Dhuha</a></li>
+                      <li><a onclick="quran(94)"> Al-Syarh</a></li>
+                      <li><a onclick="quran(95)"> At-Tin</a></li>
+                      <li><a onclick="quran(96)"> Al-Alaq</a></li>
+                      <li><a onclick="quran(97)"> Al-Qadr</a></li>
+                      <li><a onclick="quran(98)"> Al-Baiyina</a></li>
+                      <li><a onclick="quran(99)"> Al-Zalzalah</a></li>
+                      <li><a onclick="quran(100)"> Al-Adiyat</a></li>
+                      <li><a onclick="quran(101)"> Al-Qari'a</a></li>
+                      <li><a onclick="quran(102)"> At-Takathur</a></li>
+                      <li><a onclick="quran(103)"> Al-Asr</a></li>
+                      <li><a onclick="quran(104)"> Al-Humaza</a></li>
+                      <li><a onclick="quran(105)"> Al-Fil</a></li>
+                      <li><a onclick="quran(106)"> Quraish</a></li>
+                      <li><a onclick="quran(107)"> Al-Ma'un</a></li>
+                      <li><a onclick="quran(108)"> Al-Kautsar</a></li>
+                      <li><a onclick="quran(109)"> Al-Kaafirun</a></li>
+                      <li><a onclick="quran(110)"> An-Nashr</a></li>
+                      <li><a onclick="quran(111)"> Al-Lahab</a></li>
+                      <li><a onclick="quran(112)"> Al-Ikhlas</a></li>
+                      <li><a onclick="quran(113)"> Al-Falaq</a></li>
+                      <li><a onclick="quran(114)"> Al-Nas</a></li>
+                  </ul>
+              </div>
+
+              <div data-role="collapsible" data-collapsed-icon="flat-time" data-expanded-icon="flat-cross">
+                  <h3>Doa Harian</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#pagebahagia">Bahagia Dunia Akhirat</a></li>
+                      <li><a href="#pagebukapuasa">Buka Puasa</a></li>
+                      <li><a href="#pagesblmmakan">Sebelum Makan</a></li>
+                      <li><a href="#pagessdhmakan">Setelah Makan</a></li>
+                      <li><a href="#pagesusahtidur">Susah Tidur</a></li>
+                      <li><a href="#pagemusibah">Tertimpa Musibah</a></li>
+                      <li><a href="#pageorangtua">Untuk Orang Tua</a></li>
+                  </ul>
+              </div>
+              <div data-role="collapsible" data-collapsed-icon="flat-calendar" data-expanded-icon="flat-cross">
+                  <h3>Doa Sholat</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#pagesholatwajib">Niat Sholat Wajib</a></li>
+                      <li><a href="#pagestlhsholat">Setelah Sholat</a></li>
+                  </ul>
+              </div>
+              <div data-role="collapsible" data-collapsed-icon="flat-settings" data-expanded-icon="flat-cross">
+                  <h3>Doa Haji/Umroh</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#pagemasukmekah">Masuk Mekah</a></li>
+                  </ul>
+              </div>
+
+              <!-- <div data-role="collapsible" data-collapsed-icon="flat-heart" data-expanded-icon="flat-cross">
+                  <h3>Komunitas</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#semua">Semua</a></li>
+                       <li><a href="#olehsaya">Oleh Saya</a></li>
+                  </ul>
+              </div>
+
+              <div data-role="collapsible" data-collapsed-icon="flat-eye" data-expanded-icon="flat-cross">
+                  <h3>Kalender</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#kalenderislam">Kalender Hijriyah</a></li>
+                       <li><a href="#liburanmuslim">Liburan Muslim</a></li>
+                  </ul>
+              </div> -->
+
+              <div data-role="collapsible" data-collapsed-icon="flat-bubble" data-expanded-icon="flat-cross">
+                  <h3>Alat</h3>
+                  <ul data-role="listview" data-filter="true">
+                     <!--  <li><a href="#tasbih">Tasbih</a></li>
+                       <li><a href="#masjid">Masjid</a></li>
+                        <li><a href="#tempathalal">Tempat Halal</a></li> -->
+                         <li><a href="#syahadat">Syahadat</a></li>
+                          <li><a href="#99nama">99nama</a></li>
+                           <!-- <li><a href="#zakat">Zakat</a></li>
+                            <li><a href="#kiblat">Kiblat</a></li>
+                              <li><a href="#waktu">Waktu</a></li> -->
+                  </ul>
+              </div>
+
+               <!-- <div data-role="collapsible" data-collapsed-icon="flat-settings" data-expanded-icon="flat-cross">
+                  <h3>Pengaturan</h3>
+                  <ul data-role="listview" data-filter="true">
+                      <li><a href="#daftardanmasuk">Daftar dan Masuk</a></li>
+                      <li><a href="#waktusholat">Waktu Sholat</a></li>
+                      <li><a href="#al-quraan">Al-Quraan</a></li>
+                      <li><a href="#halaldanmasjid">Halal dan Masjid</a></li>
+                      <li><a href="#mengenai">Mengenai</a></li>
+                  </ul>
+              </div> -->
+        </div>
+        
+        <div data-role="header" data-theme="b">
+            <a onclick="home()" data-role="back" data-icon="back" title="Back">Back</a>
+            <h1 > Asmaul Husnah</span></h1>
+            <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+        </div>
+        <div data-role="content" id="isisurah">
+        	<table  style="width: 100%;border: solid;">
+            <thead>
+              <th width="10%">No.</th>
+              <th width="30%">Arabic</th>
+              <th width="30%">Traslation</th>
+              <th width="30%">Tanslate</th>
+            </thead> 
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td>الرَّحْمَنُ</td>
+                <td>Ar Rahman</td>
+                <td>Maha Pengasih</td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>الرَّحِيْمُ</td>
+                <td>Ar Rahiim</td>
+                <td>Maha Penyayang</td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>المَلِكُ</td>
+                <td>Al Malik</td>
+                <td>Maha Merajai</td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>القُدُّوْسُ</td>
+                <td>Al Quddus</td>
+                <td>Maha Suci</td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                <td>السَّلاَمُ</td>
+                <td>As Salaam</td>
+                <td>Maha Menyelamatkan</td>
+              </tr>
+              <tr>
+                <td>6.</td>
+                <td>المُؤْمِنُ</td>
+                <td>Al Mu`min</td>
+                <td>Maha Memelihara Keamanan</td>
+              </tr>
+              <tr>
+                <td>7.</td>
+                <td>المُهَيْمِنُ</td>
+                <td>Al Muhaimin</td>
+                <td>Maha Menjaga</td>
+              </tr>
+              <tr>
+                <td>8.</td>
+                <td>العَزِيْزُ</td>
+                <td>Al `Aziiz</td>
+                <td>Maha Mulia</td>
+              </tr>
+              <tr>
+                <td>9.</td>
+                <td>الجَبَّارُ</td>
+                <td>Al Jabbar</td>
+                <td>Maha Perkasa</td>
+              </tr>
+              <tr>
+                <td>10.</td>
+                <td>المَُتَكَبِّرُ</td>
+                <td>Al Mutakabbir</td>
+                <td>Maha Megah</td>
+              </tr>
+              <tr>
+                <td>11.</td>
+                <td>الخَالِقُ</td>
+                <td>Al Khaliq</td>
+                <td>Maha Pencipta</td>
+              </tr>
+              <tr>
+                <td>12.</td>
+                <td>البَارِئُ</td>
+                <td>Al Baari`</td>
+                <td>Maha Pembuat</td>
+              </tr>
+              <tr>
+                <td>13.</td>
+                <td>المُصَوِّرُ</td>
+                <td>Al Mushawwir</td>
+                <td>Maha Pembentuk</td>
+              </tr>
+              <tr>
+                <td>14.</td>
+                <td>الغَفَّارُ</td>
+                <td>Al Ghaffaar</td>
+                <td>Maha Pengampun</td>
+              </tr>
+              <tr>
+                <td>15.</td>
+                <td>القَهَّارُ</td>
+                <td>Al Qahhaar</td>
+                <td>Maha Pemaksa</td>
+              </tr>
+              <tr>
+                <td>16.</td>
+                <td>الوَهَّابُ</td>
+                <td>Al Wahhaab</td>
+                <td>Maha Pemberi</td>
+              </tr>
+              <tr>
+                <td>17.</td>
+                <td>الرَزَّاقُ</td>
+                <td>Ar Razzaaq</td>
+                <td>Maha Pemberi Rejeki</td>
+              </tr>
+              <tr>
+                <td>18.</td>
+                <td>الفَتَّاحُ</td>
+                <td>Al Fattaah</td>
+                <td>Maha Pembuka</td>
+              </tr>
+              <tr>
+                <td>19.</td>
+                <td>العَلِيْمُ</td>
+                <td>Al `Aliim</td>
+                <td>Maha Mengetahui (Memiliki Ilmu)</td>
+              </tr>
+              <tr>
+                <td>20.</td>
+                <td>القَابِضُ</td>
+                <td>Al Qaabidh</td>
+                <td>Maha Menyempitkan</td>
+              </tr>
+              <tr>
+                <td>21.</td>
+                <td>البَاسِطُ</td>
+                <td>Al Baasith</td>
+                <td>Maha Melapangkan (makhluknya)</td>
+              </tr>
+              <tr>
+                <td>22.</td>
+                <td>الخَافِضُ</td>
+                <td>Al Khaafidh</td>
+                <td>Maha Merendahkan (makhluknya)</td>
+              </tr>
+              <tr>
+                <td>23.</td>
+                <td>الرَافِعُ</td>
+                <td>Ar Raafi`</td>
+                <td>Maha Meninggikan (makhluknya)</td>
+              </tr>
+              <tr>
+                <td>24.</td>
+                <td>المُعِزُ</td>
+                <td>Al Mu`izz</td>
+                <td>Maha Memuliakan (makhluknya)</td>
+              </tr>
+              <tr>
+                <td>25.</td>
+                <td>المُذِلُ</td>
+                <td>Al Mudzil</td>
+                <td>Maha Menghinakan (makhluknya)</td>
+              </tr>
+              <tr>
+                <td>26.</td>
+                <td>السَمِيْعُ</td>
+                <td>As Samii`</td>
+                <td>Maha Mendengar</td>
+              </tr>
+              <tr>
+                <td>27.</td>
+                <td>البَصِيْرُ</td>
+                <td>Al Bashiir</td>
+                <td>Maha Melihat</td>
+              </tr>
+              <tr>
+                <td>28.</td>
+                <td>الحَكَمُ</td>
+                <td>Al Hakam</td>
+                <td>Maha Menetapkan Hukum</td>
+              </tr>
+              <tr>
+                <td>29.</td>
+                <td>العَدْلُ</td>
+                <td>Al `Adl</td>
+                <td>Maha Adil</td>
+              </tr>
+              <tr>
+                <td>30.</td>
+                <td>اللَّطِيْفُ</td>
+                <td>Al Lathiif</td>
+                <td>Maha Lembut</td>
+              </tr>
+              <tr>
+                <td>31.</td>
+                <td>الخَبِيْرُ</td>
+                <td>Al Khabiir</td>
+                <td>Maha Mengenal</td>
+              </tr>
+              <tr>
+                <td>32.</td>
+                <td>الحَلِيْمُ</td>
+                <td>Al Haliim</td>
+                <td>Maha Penyantun</td>
+              </tr>
+              <tr>
+                <td>33.</td>
+                <td>العَظِيْمُ</td>
+                <td>Al `Azhiim</td>
+                <td>Maha Agung</td>
+              </tr>
+              <tr>
+                <td>34.</td>
+                <td>الغَفُوْرُ</td>
+                <td>Al Ghafuur</td>
+                <td>Maha Pengampun</td>
+              </tr>
+              <tr>
+                <td>35.</td>
+                <td>الشَكُوْرُ</td>
+                <td>As Syakuur</td>
+                <td>Maha Pembalas Budi</td>
+              </tr>
+              <tr>
+                <td>36.</td>
+                <td>العَلِى</td>
+                <td>Al `Aliy</td>
+                <td>Maha Tinggi</td>
+              </tr>
+              <tr>
+                <td>37.</td>
+                <td>الكَبِيْرُ</td>
+                <td>Al Kabiir</td>
+                <td>Maha Besar</td>
+              </tr>
+              <tr>
+                <td>38.</td>
+                <td>الحَفِيْظُ</td>
+                <td>Al Hafizh</td>
+                <td>Maha Memelihara</td>
+              </tr>
+              <tr>
+                <td>39.</td>
+                <td>المُقِيْتُ</td>
+                <td>Al Muqiit</td>
+                <td>Pemberi Kecukupan</td>
+              </tr>
+              <tr>
+                <td>40.</td>
+                <td>الحَسِيْبُ</td>
+                <td>Al Hasiib</td>
+                <td>Maha Membuat Perhitungan</td>
+              </tr>
+              <tr>
+                <td>41.</td>
+                <td>الجَلِيْلُ</td>
+                <td>Al Jaliil</td>
+                <td>Maha Mulia</td>
+              </tr>
+              <tr>
+                <td>42.</td>
+                <td>الكَرِيْمُ</td>
+                <td>Al Kariim</td>
+                <td>Maha Mulia</td>
+              </tr>
+              <tr>
+                <td>43.</td>
+                <td>الرَقِيْبُ</td>
+                <td>Ar Raqiib</td>
+                <td>Maha Mengawasi</td>
+              </tr>
+              <tr>
+                <td>44.</td>
+                <td>المُجِيْبُ</td>
+                <td>Al Mujiib</td>
+                <td>Maha Mengabulkan</td>
+              </tr>
+              <tr>
+                <td>45.</td>
+                <td>الوَاسِعُ</td>
+                <td>Al Waasi`</td>
+                <td>Maha Luas</td>
+              </tr>
+              <tr>
+                <td>46.</td>
+                <td>الحَكِيْمُ</td>
+                <td>Al Hakiim</td>
+                <td>Maha Bijaksana</td>
+              </tr>
+              <tr>
+                <td>47.</td>
+                <td>الوَدُوْدُ</td>
+                <td>Al Waduud</td>
+                <td>Maha Mengasihi</td>
+              </tr>
+              <tr>
+                <td>48.</td>
+                <td>المَجِيْدُ</td>
+                <td>Al Majiid</td>
+                <td>Maha Mulia</td>
+              </tr>
+              <tr>
+                <td>49.</td>
+                <td>البَاعِثُ</td>
+                <td>Al Baa`its</td>
+                <td>Maha Membangkitkan</td>
+              </tr>
+              <tr>
+                <td>50.</td>
+                <td>الشَهِيْدُ</td>
+                <td>As Syahiid</td>
+                <td>Maha Menyaksikan</td>
+              </tr>
+              <tr>
+                <td>51.</td>
+                <td>الحَقُّ</td>
+                <td>Al Haqq</td>
+                <td>Maha Benar</td>
+              </tr>
+              <tr>
+                <td>52.</td>
+                <td>الوَكِيْلُ</td>
+                <td>Al Wakiil</td>
+                <td>Maha Memelihara</td>
+              </tr>
+              <tr>
+                <td>53.</td>
+                <td>القَوِّى</td>
+                <td>Al Qawiyyu</td>
+                <td>Maha Kuat</td>
+              </tr>
+              <tr>
+                <td>54.</td>
+                <td>المَتِيْنُ</td>
+                <td>Al Matiin</td>
+                <td>Maha Kokoh</td>
+              </tr>
+              <tr>
+                <td>55.</td>
+                <td>الوَلِى</td>
+                <td>Al Waliyy</td>
+                <td>Maha Melindungi</td>
+              </tr>
+              <tr>
+                <td>56.</td>
+                <td>الحَمِيْدُ</td>
+                <td>Al Hamiid</td>
+                <td>Maha Terpuji</td>
+              </tr>
+              <tr>
+                <td>57.</td>
+                <td>الوَدُوْدُ</td>
+                <td>Al Muhshii</td>
+                <td>Maha Mengkalkulasi</td>
+              </tr>
+              <tr>
+                <td>58.</td>
+                <td>المُبْدِئُ</td>
+                <td>Al Mubdi`</td>
+                <td>Maha Memulai</td>
+              </tr>
+              <tr>
+                <td>59.</td>
+                <td>المُعِيْدُ</td>
+                <td>Al Mu`iid</td>
+                <td>Maha Mengembalikan Kehidupan</td>
+              </tr>
+              <tr>
+                <td>60.</td>
+                <td>المُحْيِى</td>
+                <td>Al Muhyii</td>
+                <td>Maha Menghidupkan</td>
+              </tr>
+              <tr>
+                <td>61.</td>
+                <td>المُمِيْتُ</td>
+                <td>Al Mumiitu</td>
+                <td>Maha Mematikan</td>
+              </tr>
+              <tr>
+                <td>62.</td>
+                <td>الوَكِيْلُ</td>
+                <td>Al Hayyu</td>
+                <td>Maha Hidup</td>
+              </tr>
+              <tr>
+                <td>63.</td>
+                <td>القَيُّوْمُ</td>
+                <td>Al Qayyuum</td>
+                <td>Maha Mandiri</td>
+              </tr>
+              <tr>
+                <td>64.</td>
+                <td>الوَاجِدُ</td>
+                <td>Al Waajid</td>
+                <td>Maha Penemu</td>
+              </tr>
+              <tr>
+                <td>65.</td>
+                <td>المَاجِدُ</td>
+                <td>Al Maajid</td>
+                <td>Maha Mulia</td>
+              </tr>
+              <tr>
+                <td>66.</td>
+                <td>الوَاحِدُ</td>
+                <td>Al Wahiid</td>
+                <td>Maha Tunggal</td>
+              </tr>
+              <tr>
+                <td>67.</td>
+                <td>الاَحَدُ</td>
+                <td>Al Ahad</td>
+                <td>Maha Esa</td>
+              </tr>
+              <tr>
+                <td>68.</td>
+                <td>الصَمَدُ</td>
+                <td>As Shamad</td>
+                <td>Maha Tempat Meminta</td>
+              </tr>
+              <tr>
+                <td>69.</td>
+                <td>القَادِرُ</td>
+                <td>Al Qaadir</td>
+                <td>Maha Kuasa</td>
+              </tr>
+              <tr>
+                <td>70.</td>
+                <td>المُقْتَدِرُ</td>
+                <td>Al Muqtadir</td>
+                <td>Maha Menentukan</td>
+              </tr>
+              <tr>
+                <td>71.</td>
+                <td>المُقَدِّمُ</td>
+                <td>Al Muqaddim</td>
+                <td>Maha Mendahulukan</td>
+              </tr>
+              <tr>
+                <td>72.</td>
+                <td>المُؤَخِرُ</td>
+                <td>Al Mu`akkhir</td>
+                <td>Maha Mengakhirkan</td>
+              </tr>
+              <tr>
+                <td>73.</td>
+                <td>الأَوَّلُ</td>
+                <td>Al Awwal</td>
+                <td>Maha Awal</td>
+              </tr>
+              <tr>
+                <td>74.</td>
+                <td>الأَخِرُ</td>
+                <td>Al Aakhir</td>
+                <td>Maha Akhir</td>
+              </tr>
+              <tr>
+                <td>75.</td>
+                <td>الظَاهِرُ</td>
+                <td>Az Zhaahir </td>
+                <td>Maha Nyata</td>
+              </tr>
+              <tr>
+                <td>76.</td>
+                <td>البَاطِنُ</td>
+                <td>Al Baathin</td>
+                <td>Maha Ghaib</td>
+              </tr>
+              <tr>
+                <td>77.</td>
+                <td>الوَالِي</td>
+                <td>Al Waali</td>
+                <td>Maha Memerintah</td>
+              </tr>
+              <tr>
+                <td>78.</td>
+                <td>المُتَعَالِي</td>
+                <td>Al Muta`aalii</td>
+                <td>Maha Tinggi</td>
+              </tr>
+              <tr>
+                <td>79.</td>
+                <td>البَرِ</td>
+                <td>Al Barri</td>
+                <td>Maha Penderma</td>
+              </tr>
+              <tr>
+                <td>80.</td>
+                <td>التَوَّابُ</td>
+                <td>At Tawwaab</td>
+                <td>Maha Penerima Tobat</td>
+              </tr>
+              <tr>
+                <td>81.</td>
+                <td>المُنْتَقِمُ</td>
+                <td>Al Muntaqim</td>
+                <td>Maha Pemberi Balasan</td>
+              </tr>
+              <tr>
+                <td>82.</td>
+                <td>العَفُو</td>
+                <td>Al Afuww</td>
+                <td>Maha Pemaaf</td>
+              </tr>
+              <tr>
+                <td>83.</td>
+                <td>الرَؤُوْفُ</td>
+                <td>Ar Ra`uuf</td>
+                <td>Maha Pengasuh</td>
+              </tr>
+              <tr>
+                <td>84.</td>
+                <td>مَالِكُ الْمُلْك</td>
+                <td>Malikul Mulk</td>
+                <td>Maha Penguasa Kerajaan</td>
+              </tr>
+              <tr>
+                <td>85.</td>
+                <td>ذُو الْجَلاَلِ وَ اْلإِكْرَام</td>
+                <td>Dzul Jalaali Wal Ikraam</td>
+                <td>Maha Pemilik Kebesaran dan Kemuliaan</td>
+              </tr>
+              <tr>
+                <td>86.</td>
+                <td>المُقْسِطُ</td>
+                <td>Al Muqsith</td>
+                <td>Maha Pemberi Keadilan</td>
+              </tr>
+              <tr>
+                <td>87.</td>
+                <td>الجَامِعُ</td>
+                <td>Al Jamii`</td>
+                <td>Maha Mengumpulkan</td>
+              </tr>
+              <tr>
+                <td>88.</td>
+                <td>الغَنِى</td>
+                <td>Al Ghaniyy</td>
+                <td>Maha Kaya</td>
+              </tr>
+              <tr>
+                <td>89.</td>
+                <td>المُغْنِى</td>
+                <td>Al Mughnii</td>
+                <td>Maha Pemberi Kekayaan</td>
+              </tr>
+              <tr>
+                <td>90.</td>
+                <td>المَانِعُ</td>
+                <td>Al Maani</td>
+                <td>Maha Mencegah</td>
+              </tr>
+              <tr>
+                <td>91.</td>
+                <td>الضَارُ</td>
+                <td>Ad Dhaar</td>
+                <td>Maha Penimpa Kemudharatan</td>
+              </tr>
+              <tr>
+                <td>92.</td>
+                <td>النَافِعُ</td>
+                <td>An Nafii`</td>
+                <td>Maha Memberi Manfaat</td>
+              </tr>
+              <tr>
+                <td>93.</td>
+                <td>النُوْرُ</td>
+                <td>An Nuur</td>
+                <td>Maha Bercahaya</td>
+              </tr>
+              <tr>
+                <td>94.</td>
+                <td>الهَادِئُ</td>
+                <td>Al Haadii</td>
+                <td>Maha Pemberi Petunjuk</td>
+              </tr>
+              <tr>
+                <td>95.</td>
+                <td>البَدِيْعُ</td>
+                <td>Al Baadii</td>
+                <td>Maha Pencipta yang Baru</td>
+              </tr>
+              <tr>
+                <td>96.</td>
+                <td>البَاقِي</td>
+                <td>Al Baaqii</td>
+                <td>Maha Kekal</td>
+              </tr>
+              <tr>
+                <td>97.</td>
+                <td>الوَارِثُ</td>
+                <td>Al Waarits</td>
+                <td>Maha Pewaris</td>
+              </tr>
+              <tr>
+                <td>98.</td>
+                <td>الرَشِيْدُ</td>
+                <td>Ar Rasyiid</td>
+                <td>Maha Pandai</td>
+              </tr>
+              <tr>
+                <td>99.</td>
+                <td>الصَبُوْرُ</td>
+                <td>As Shabuur</td>
+                <td>Maha Sabar</td>
+              </tr>
+            </tbody>
+          </table>
+            	
+        </div>
+    </div>
+
+  <div id="highlight"> </div>
+</body>
+</html>
